@@ -1,0 +1,1 @@
+python main.py --display-interval 0.2
