@@ -1,7 +1,17 @@
 """Construye el notebook de Colab (version sencilla, estilo alumna primeriza)."""
+import sys, os
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import nbformat as nbf
+from diccionario import PRINCIPALES, OTRAS
 
 C = []
+
+TABLA_VARS = ("**Variables que uso en el modelo** (nombre en mi código, nombre original en la ENOE y qué significa):\n\n"
+              "| Nombre en mi código | Nombre original ENOE | Qué significa | Tipo | Valores |\n|---|---|---|---|---|\n"
+              + "\n".join("| `%s` | `%s` | %s | %s | %s |" % v for v in PRINCIPALES)
+              + "\n\n**Otras variables que revisé pero NO usé como predictoras:**\n\n"
+              "| Variable | Qué significa | ¿Por qué no la usé? |\n|---|---|---|\n"
+              + "\n".join("| `%s` | %s | %s |" % v for v in OTRAS))
 def md(s):   C.append(nbf.v4.new_markdown_cell(s.strip("\n")))
 def code(s): C.append(nbf.v4.new_code_cell(s.strip("\n")))
 
@@ -118,7 +128,7 @@ datos = pd.read_csv(BASE + "/conjunto_de_datos/conjunto_de_datos_sdem_enoe_2026_
                     encoding="latin1", low_memory=False)
 
 # Catalogo con los nombres de los estados
-cat_ent = pd.read_csv(BASE + "/catalogos/cve_ent.csv", encoding="latin1", dtype=str)
+cat_ent = pd.read_csv(BASE + "/catalogos/cve_ent.csv", encoding="utf-8", dtype=str)   # este catalogo viene en UTF-8 (acentos)
 nombres_estados = {}
 for i in range(len(cat_ent)):
     nombres_estados[int(cat_ent["CVE_ENT"][i])] = cat_ent["DESCRIP"][i]
@@ -236,7 +246,7 @@ print("Nulos: escolaridad", d["anios_esc"].isna().sum(), "| horas", d["hrsocup"]
 md(r"""
 ### 2.3 Valores atípicos (outliers)
 Los **atípicos** son valores muy alejados del resto. Los detecté con la regla del rango intercuartílico (IQR): es atípico lo que pasa de `Q3 + 1.5 × IQR`.
-El ingreso tiene unos pocos valores enormes, así que los voy a **limitar al percentil 99** (si alguien gana más que ese valor, le pongo el valor del percentil 99) y luego aplico **logaritmo** para que la distribución sea menos sesgada. No elimino filas, para no perder información.
+El ingreso tiene unos pocos valores enormes, así que los voy a **limitar al percentil 99** (si alguien gana más que ese valor, le pongo el valor del percentil 99) y luego aplico **logaritmo** para que la distribución sea menos sesgada. No elimino filas, para no perder información. Las horas por semana las muestro con un **histograma**: casi todos trabajan jornadas de 40 a 48 horas (la barra alta) y hay una cola a la derecha con pocas personas que trabajan muchas horas; la línea roja marca el tope que uso (percentil 99).
 """)
 code(r"""
 atipicos = {}
@@ -258,8 +268,12 @@ ax[0].set_title("Ingreso original")
 ax[0].legend()
 ax[1].hist(np.log1p(d["ingreso"].clip(upper=p99).dropna()), bins=50, color=VERDE)
 ax[1].set_title("Ingreso limitado + logaritmo")
-ax[2].boxplot(d["hrsocup"].dropna())
+tope_h = d["hrsocup"].quantile(0.99)
+ax[2].hist(d["hrsocup"].dropna(), bins=range(0, 100, 4), color=NARANJA)
+ax[2].axvline(tope_h, color=ROJO, linestyle="--", label="percentil 99 = " + str(int(tope_h)) + " h")
 ax[2].set_title("Horas trabajadas por semana")
+ax[2].set_xlabel("Horas por semana")
+ax[2].legend(loc="upper right")
 guardar("f03_outliers")
 """)
 
@@ -355,18 +369,7 @@ guardar("f04_antes_despues")
 md(r"""
 ## 3. Identificación y clasificación de variables
 
-| Tipo | Variable | Clase | ¿Por qué la elegí? |
-|---|---|---|---|
-| **Objetivo (y)** | `y` (1 informal, 0 formal) | cualitativa binaria | es la medición oficial de informalidad |
-| Predictora (X) | `eda` (edad) | cuantitativa | la edad influye en el tipo de trabajo |
-| X | `anios_esc` (años de escuela) | cuantitativa | sirve para H1 |
-| X | `hrsocup` (horas por semana) | cuantitativa | cuánto se trabaja |
-| X | `ingreso` (ingreso mensual) | cuantitativa | sirve para H3 |
-| X | `sin_ingreso` | cuantitativa binaria | personas que no reciben pago |
-| X | `sexo`, `estado_civil` | cualitativa | diferencias entre grupos |
-| X | `localidad` (tamaño) | cualitativa | sirve para H2 |
-| X | `sector` | cualitativa | cada sector tiene distinta formalidad |
-| X | `entidad` (estado) | cualitativa | diferencias entre estados |
+""" + TABLA_VARS + r"""
 
 ### 3.1 ¿Hay relación entre las variables y la variable objetivo?
 Primero veo el porcentaje de informalidad por grupos (si cambia mucho entre grupos, hay relación) y después hago pruebas estadísticas.

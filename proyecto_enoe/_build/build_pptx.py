@@ -1,5 +1,7 @@
 """Arma la presentacion (PPTX) con las cifras reales del notebook."""
-import json
+import json, sys, os
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from diccionario import PRINCIPALES
 from pptx import Presentation
 from pptx.util import Inches, Pt
 from pptx.dml.color import RGBColor
@@ -108,7 +110,7 @@ def dato(s, x, y, w, numero, etiqueta, color=AZUL2):
     texto(s, x + 0.25, y + 0.85, w - 0.3, 0.6, [etiqueta], tam=13)
 
 
-def tabla(s, x, y, w, filas, anchos, tam=14, alto=0.42):
+def tabla(s, x, y, w, filas, anchos, tam=14, alto=0.42, izq=(0,)):
     nfil, ncol = len(filas), len(filas[0])
     t = s.shapes.add_table(nfil, ncol, Inches(x), Inches(y), Inches(w), Inches(alto * nfil)).table
     for j, a in enumerate(anchos):
@@ -119,7 +121,7 @@ def tabla(s, x, y, w, filas, anchos, tam=14, alto=0.42):
             c.text = str(v)
             c.vertical_anchor = MSO_ANCHOR.MIDDLE
             para = c.text_frame.paragraphs[0]
-            para.alignment = PP_ALIGN.LEFT if j == 0 else PP_ALIGN.CENTER
+            para.alignment = PP_ALIGN.LEFT if j in izq else PP_ALIGN.CENTER
             for r in para.runs:
                 r.font.size = Pt(tam); r.font.name = "Calibri"
                 r.font.bold = (i == 0)
@@ -217,6 +219,11 @@ viñetas(s, 0.7, 4.4, 12.0, 2.5, [
     ("Estandarización (StandardScaler): ", "solo en la regresión logística, porque es sensible a la escala."),
     ("Sin fuga: ", "medianas, percentiles y escalador se calculan solo con entrenamiento."),
 ], tam=16)
+
+# 6b ── Diccionario de variables
+s = nueva("Diccionario de variables", "Aquí explico cada variable: cómo se llama en mi código, cómo se llama en la ENOE y qué significa.")
+filas = [["En mi código", "En la ENOE", "Qué significa"]] + [[v[0], v[1], v[2]] for v in PRINCIPALES]
+tabla(s, 0.4, 1.25, 12.5, filas, [1.7, 1.9, 8.9], tam=12, alto=0.45, izq=(0, 2))
 
 # 7 ── Variables
 s = nueva("Variables y su relación con la informalidad",

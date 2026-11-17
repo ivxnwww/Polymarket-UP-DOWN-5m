@@ -1,5 +1,7 @@
 """Arma el documento del proyecto (DOCX) con las cifras reales del notebook."""
-import json
+import json, sys, os
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from diccionario import PRINCIPALES, OTRAS
 from docx import Document
 from docx.shared import Pt, Inches, RGBColor
 from docx.enum.text import WD_ALIGN_PARAGRAPH
@@ -119,7 +121,7 @@ def codigo(texto):
     doc.add_paragraph().paragraph_format.space_after = Pt(2)
 
 
-def tabla(titulo, encabezados, filas, anchos=None, tam=9.5):
+def tabla(titulo, encabezados, filas, anchos=None, tam=9.5, izq=(0,)):
     n_tabla[0] += 1
     par = doc.add_paragraph()
     par.alignment = WD_ALIGN_PARAGRAPH.CENTER
@@ -146,7 +148,7 @@ def tabla(titulo, encabezados, filas, anchos=None, tam=9.5):
             run = cel[i].paragraphs[0].add_run(str(v))
             run.font.size = Pt(tam)
             cel[i].paragraphs[0].paragraph_format.space_after = Pt(0)
-            if i > 0:
+            if i not in izq:
                 cel[i].paragraphs[0].alignment = WD_ALIGN_PARAGRAPH.CENTER
     if anchos:
         for fila in t.rows:
@@ -317,7 +319,7 @@ p("Usé la mediana y no la media porque la mediana casi no cambia con valores ex
 
 h2("2.3 Valores atípicos (outliers)")
 que_hace("Detecta los valores muy alejados con la regla del IQR (es atípico lo que pasa de Q3 + 1.5 × IQR) y luego los controla. Para el "
-         "ingreso uso winsorización (limitar al percentil 99) y logaritmo; para las horas también limito al percentil 99. No elimino filas.")
+         "ingreso uso winsorización (limitar al percentil 99) y logaritmo; para las horas también limito al percentil 99. No elimino filas. Las horas las muestro con un histograma.")
 at = R["atipicos"]
 tabla("Valores atípicos detectados con la regla del IQR", ["Variable", "Límite IQR", "Atípicos", "% del total"], [
     ["Ingreso mensual", "$" + miles(at["ingreso"]["limite"]), miles(at["ingreso"]["n_atipicos"]), f(at["ingreso"]["porcentaje"], 2) + "%"],
@@ -326,9 +328,10 @@ tabla("Valores atípicos detectados con la regla del IQR", ["Variable", "Límite
 ], anchos=[2.0, 1.4, 1.4, 1.4])
 resultado("Hay pocos atípicos (menos del 3% en todas las variables). El ingreso tiene una cola muy larga hacia la derecha, por eso el tope del "
           "percentil 99 quedó en $" + miles(R["topes"]["ingreso"]) + " y el de las horas en " + miles(R["topes"]["horas"]) + " por semana. "
+          "En el histograma de horas se ve que casi todos trabajan jornadas de 40 a 48 horas (la barra más alta) y que hay una cola a la derecha con pocas personas que trabajan muchas horas; la línea roja es el tope. "
           "Significa que unos pocos valores extremos no van a dominar al modelo, y no perdí ninguna fila. La edad no la modifiqué porque "
           "los valores altos son personas mayores reales.")
-figura("f03_outliers", "Ingreso original, ingreso limitado con logaritmo y horas trabajadas.", 6.2)
+figura("f03_outliers", "Ingreso original, ingreso limitado con logaritmo e histograma de las horas trabajadas.", 6.2)
 
 h2("2.4 Variables cualitativas a cuantitativas, división y estandarización")
 lista([
@@ -370,18 +373,12 @@ figura("f04_antes_despues", "Distribuciones antes y después de la limpieza.", 6
 
 # ───────────────────────────── 3 ─────────────────────────────
 h1("3. Identificación y clasificación de variables")
-tabla("Variables del proyecto", ["Rol", "Variable", "Tipo", "¿Por qué la elegí?"], [
-    ["Objetivo (y)", "y (1 informal, 0 formal)", "Cualitativa binaria", "Es la medición oficial de informalidad"],
-    ["Predictora (X)", "eda", "Cuantitativa", "La edad influye en el tipo de trabajo"],
-    ["X", "anios_esc", "Cuantitativa", "Escolaridad (H1)"],
-    ["X", "hrsocup", "Cuantitativa", "Horas que trabaja por semana"],
-    ["X", "ingreso", "Cuantitativa", "Ingreso mensual (H3)"],
-    ["X", "sin_ingreso", "Cuantitativa (0/1)", "Personas que no reciben pago"],
-    ["X", "sexo, estado_civil", "Cualitativa", "Diferencias entre grupos"],
-    ["X", "localidad", "Cualitativa ordinal", "Tamaño de la localidad (H2)"],
-    ["X", "sector", "Cualitativa nominal", "Cada sector formaliza distinto"],
-    ["X", "entidad", "Cualitativa nominal", "Diferencias entre estados"],
-], anchos=[1.1, 1.6, 1.3, 2.5], tam=9)
+p("En la ENOE las variables tienen nombres cortos (por ejemplo sex, e_con, rama). En mi código algunas las renombré para entenderlas mejor. "
+  "En la Tabla siguiente pongo el nombre que uso en mi código, el nombre original de la ENOE y qué significa cada una.")
+tabla("Variables que uso en el modelo (diccionario de variables)", ["Nombre en mi código", "Nombre original ENOE", "Qué significa", "Tipo", "Valores"],
+      [list(v) for v in PRINCIPALES], anchos=[0.95, 0.95, 2.2, 1.0, 1.5], tam=8.5, izq=(0, 1, 2, 4))
+tabla("Otras variables que revisé pero no usé como predictoras", ["Variable", "Qué significa", "¿Por qué no la usé?"],
+      [list(v) for v in OTRAS], anchos=[0.9, 3.5, 2.2], tam=8.5, izq=(0, 1, 2))
 h2("3.1 ¿Existe relación entre las variables y la variable objetivo?")
 que_hace("Primero calcula el porcentaje de informalidad en cada grupo (si cambia mucho entre grupos, hay relación). Después hace pruebas "
          "estadísticas: chi cuadrada para las cualitativas y t de Student para las numéricas, con una medida de qué tan fuerte es la relación.")

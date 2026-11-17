@@ -318,9 +318,9 @@
    "ROC-AUC": 0.82168,
    "AUC entrenamiento": 0.82068,
    "AUC validación": 0.82069,
-   "t_busqueda": 17.04896,
-   "t_entrenar": 2.02824,
-   "t_predecir": 0.00418,
+   "t_busqueda": 15.46885,
+   "t_entrenar": 1.75206,
+   "t_predecir": 0.00417,
    "Diferencia train-test": -0.00099
   },
   "Árbol de decisión": {
@@ -331,9 +331,9 @@
    "ROC-AUC": 0.86106,
    "AUC entrenamiento": 0.87243,
    "AUC validación": 0.84175,
-   "t_busqueda": 3.91378,
-   "t_entrenar": 0.66113,
-   "t_predecir": 0.00237,
+   "t_busqueda": 4.12445,
+   "t_entrenar": 0.71842,
+   "t_predecir": 0.00242,
    "Diferencia train-test": 0.01136
   },
   "Random Forest": {
@@ -344,9 +344,9 @@
    "ROC-AUC": 0.87451,
    "AUC entrenamiento": 0.89017,
    "AUC validación": 0.86897,
-   "t_busqueda": 25.15232,
-   "t_entrenar": 4.60949,
-   "t_predecir": 0.06648,
+   "t_busqueda": 25.78061,
+   "t_entrenar": 4.48805,
+   "t_predecir": 0.05998,
    "Diferencia train-test": 0.01566
   }
  },
@@ -363,19 +363,19 @@
  ],
  "tiempos": {
   "Regresión logística": {
-   "Búsqueda de parámetros (s)": 17.049,
-   "Entrenamiento final (s)": 2.028,
+   "Búsqueda de parámetros (s)": 15.469,
+   "Entrenamiento final (s)": 1.752,
    "Predicción por 10 mil filas (s)": 0.004
   },
   "Árbol de decisión": {
-   "Búsqueda de parámetros (s)": 3.914,
-   "Entrenamiento final (s)": 0.661,
+   "Búsqueda de parámetros (s)": 4.124,
+   "Entrenamiento final (s)": 0.718,
    "Predicción por 10 mil filas (s)": 0.002
   },
   "Random Forest": {
-   "Búsqueda de parámetros (s)": 25.152,
-   "Entrenamiento final (s)": 4.609,
-   "Predicción por 10 mil filas (s)": 0.066
+   "Búsqueda de parámetros (s)": 25.781,
+   "Entrenamiento final (s)": 4.488,
+   "Predicción por 10 mil filas (s)": 0.06
   }
  },
  "escalamiento": {
@@ -388,31 +388,31 @@
   ],
   "tiempos": {
    "Regresión logística": [
-    0.0330815315246582,
-    0.7735335826873779,
-    1.1432149410247803,
-    0.932185173034668,
-    1.5788631439208984
+    0.030039548873901367,
+    0.8693280220031738,
+    0.9838249683380127,
+    0.9511704444885254,
+    1.680657148361206
    ],
    "Árbol de decisión": [
-    0.03986167907714844,
-    0.05273008346557617,
-    0.07112288475036621,
-    0.13505029678344727,
-    0.5376453399658203
+    0.0389401912689209,
+    0.05128121376037598,
+    0.06686949729919434,
+    0.13539576530456543,
+    0.5327210426330566
    ],
    "Random Forest": [
-    0.33411669731140137,
-    0.5291810035705566,
-    1.0413997173309326,
-    2.007007598876953,
-    7.621554613113403
+    0.3257560729980469,
+    0.5383515357971191,
+    0.9859983921051025,
+    1.90748929977417,
+    8.146894216537476
    ]
   },
   "pendientes": {
-   "Regresión logística": 0.895729706538061,
-   "Árbol de decisión": 0.771238214691066,
-   "Random Forest": 0.9308752335633206
+   "Regresión logística": 0.9246115015325517,
+   "Árbol de decisión": 0.7785045591439261,
+   "Random Forest": 0.9495596706672074
   }
  },
  "reproducible": true,
@@ -533,7 +533,7 @@
    "coeficiente": -0.5315,
    "OR": 0.5877
   },
-  "entidad_Ciudad de MÃ©xico": {
+  "entidad_Ciudad de México": {
    "coeficiente": 0.3823,
    "OR": 1.4656
   },
@@ -565,7 +565,7 @@
    "coeficiente": -0.1407,
    "OR": 0.8688
   },
-  "entidad_MichoacÃ¡n": {
+  "entidad_Michoacán": {
    "coeficiente": 0.5036,
    "OR": 1.6547
   },
@@ -573,7 +573,7 @@
    "coeficiente": 0.7679,
    "OR": 2.1552
   },
-  "entidad_MÃ©xico": {
+  "entidad_México": {
    "coeficiente": 0.3901,
    "OR": 1.4771
   },
@@ -581,7 +581,7 @@
    "coeficiente": 0.2103,
    "OR": 1.234
   },
-  "entidad_Nuevo LeÃ³n": {
+  "entidad_Nuevo León": {
    "coeficiente": -0.3231,
    "OR": 0.7239
   },
@@ -593,7 +593,7 @@
    "coeficiente": 0.8619,
    "OR": 2.3677
   },
-  "entidad_QuerÃ©taro": {
+  "entidad_Querétaro": {
    "coeficiente": -0.301,
    "OR": 0.7401
   },
@@ -601,7 +601,7 @@
    "coeficiente": -0.1803,
    "OR": 0.835
   },
-  "entidad_San Luis PotosÃ­": {
+  "entidad_San Luis Potosí": {
    "coeficiente": 0.1949,
    "OR": 1.2152
   },
@@ -629,7 +629,7 @@
    "coeficiente": 0.4567,
    "OR": 1.5789
   },
-  "entidad_YucatÃ¡n": {
+  "entidad_Yucatán": {
    "coeficiente": 0.4136,
    "OR": 1.5123
   },
