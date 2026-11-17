@@ -318,9 +318,9 @@
    "ROC-AUC": 0.82168,
    "AUC entrenamiento": 0.82068,
    "AUC validación": 0.82069,
-   "t_busqueda": 15.46885,
-   "t_entrenar": 1.75206,
-   "t_predecir": 0.00417,
+   "t_busqueda": 14.69462,
+   "t_entrenar": 1.84407,
+   "t_predecir": 0.00419,
    "Diferencia train-test": -0.00099
   },
   "Árbol de decisión": {
@@ -331,9 +331,9 @@
    "ROC-AUC": 0.86106,
    "AUC entrenamiento": 0.87243,
    "AUC validación": 0.84175,
-   "t_busqueda": 4.12445,
-   "t_entrenar": 0.71842,
-   "t_predecir": 0.00242,
+   "t_busqueda": 4.1341,
+   "t_entrenar": 0.68926,
+   "t_predecir": 0.00316,
    "Diferencia train-test": 0.01136
   },
   "Random Forest": {
@@ -344,9 +344,9 @@
    "ROC-AUC": 0.87451,
    "AUC entrenamiento": 0.89017,
    "AUC validación": 0.86897,
-   "t_busqueda": 25.78061,
-   "t_entrenar": 4.48805,
-   "t_predecir": 0.05998,
+   "t_busqueda": 24.82496,
+   "t_entrenar": 4.50424,
+   "t_predecir": 0.06377,
    "Diferencia train-test": 0.01566
   }
  },
@@ -363,19 +363,19 @@
  ],
  "tiempos": {
   "Regresión logística": {
-   "Búsqueda de parámetros (s)": 15.469,
-   "Entrenamiento final (s)": 1.752,
+   "Búsqueda de parámetros (s)": 14.695,
+   "Entrenamiento final (s)": 1.844,
    "Predicción por 10 mil filas (s)": 0.004
   },
   "Árbol de decisión": {
-   "Búsqueda de parámetros (s)": 4.124,
-   "Entrenamiento final (s)": 0.718,
-   "Predicción por 10 mil filas (s)": 0.002
+   "Búsqueda de parámetros (s)": 4.134,
+   "Entrenamiento final (s)": 0.689,
+   "Predicción por 10 mil filas (s)": 0.003
   },
   "Random Forest": {
-   "Búsqueda de parámetros (s)": 25.781,
-   "Entrenamiento final (s)": 4.488,
-   "Predicción por 10 mil filas (s)": 0.06
+   "Búsqueda de parámetros (s)": 24.825,
+   "Entrenamiento final (s)": 4.504,
+   "Predicción por 10 mil filas (s)": 0.064
   }
  },
  "escalamiento": {
@@ -388,31 +388,31 @@
   ],
   "tiempos": {
    "Regresión logística": [
-    0.030039548873901367,
-    0.8693280220031738,
-    0.9838249683380127,
-    0.9511704444885254,
-    1.680657148361206
+    0.02660083770751953,
+    0.8343091011047363,
+    0.7817680835723877,
+    0.9697327613830566,
+    1.7931149005889893
    ],
    "Árbol de decisión": [
-    0.0389401912689209,
-    0.05128121376037598,
-    0.06686949729919434,
-    0.13539576530456543,
-    0.5327210426330566
+    0.04607534408569336,
+    0.05019855499267578,
+    0.07856464385986328,
+    0.13693618774414062,
+    0.5101618766784668
    ],
    "Random Forest": [
-    0.3257560729980469,
-    0.5383515357971191,
-    0.9859983921051025,
-    1.90748929977417,
-    8.146894216537476
+    0.33724164962768555,
+    0.5629987716674805,
+    1.0256783962249756,
+    1.9912543296813965,
+    7.881549119949341
    ]
   },
   "pendientes": {
-   "Regresión logística": 0.9246115015325517,
-   "Árbol de decisión": 0.7785045591439261,
-   "Random Forest": 0.9495596706672074
+   "Regresión logística": 0.9798173331288944,
+   "Árbol de decisión": 0.7301789997399522,
+   "Random Forest": 0.9303214801491789
   }
  },
  "reproducible": true,
