@@ -82,7 +82,8 @@ def nueva(titulo, notas="", num=[0]):
     s = prs.slides.add_slide(BLANK)
     num[0] += 1
     caja(s, 0, 0, 13.333, 1.05, AZUL)
-    texto(s, 0.5, 0.12, 12.3, 0.85, [titulo], tam=30, color=BLANCO, ancla=MSO_ANCHOR.MIDDLE)
+    s.shapes.add_picture(FIG + "logo_cugdl_blanco.png", Inches(11.35), Inches(0.2), width=Inches(1.75))
+    texto(s, 0.5, 0.12, 10.6, 0.85, [titulo], tam=28, color=BLANCO, ancla=MSO_ANCHOR.MIDDLE)
     for r in s.shapes[-1].text_frame.paragraphs[0].runs:
         r.font.bold = True
     texto(s, 0.5, 7.05, 9, 0.35, ["Melany Liliana Santillan Salazar · Analítica Predictiva"], tam=11, color=RGBColor(0x6B, 0x72, 0x80))
@@ -132,6 +133,7 @@ def tabla(s, x, y, w, filas, anchos, tam=14, alto=0.42):
 s = prs.slides.add_slide(BLANK)
 caja(s, 0, 0, 13.333, 7.5, AZUL)
 caja(s, 0.8, 3.55, 1.6, 0.07, NARANJA)
+s.shapes.add_picture(FIG + "logo_cugdl_blanco.png", Inches(0.8), Inches(0.45), width=Inches(3.4))
 texto(s, 0.8, 1.5, 11.5, 2.0, ["¿Quién trabaja en la informalidad?", "Predicción con datos de la ENOE (INEGI)"], tam=40, color=BLANCO)
 for p in s.shapes[-1].text_frame.paragraphs:
     for r in p.runs:
@@ -344,6 +346,7 @@ caja(s, 0, 0, 13.333, 7.5, AZUL)
 texto(s, 0.8, 2.5, 11.7, 1.2, ["¡Gracias! ¿Preguntas?"], tam=44, color=BLANCO)
 s.shapes[-1].text_frame.paragraphs[0].runs[0].font.bold = True
 caja(s, 0.8, 3.75, 1.6, 0.07, NARANJA)
+s.shapes.add_picture(FIG + "logo_cugdl_blanco.png", Inches(0.8), Inches(0.45), width=Inches(3.4))
 texto(s, 0.8, 4.1, 11.7, 1.5, ["Melany Liliana Santillan Salazar", "Analítica Predictiva · Profesor Marco Antonio Cisneros Guevara",
                                 "Fuente: INEGI, ENOE 2.º trimestre 2026"], tam=18, color=RGBColor(0xBF, 0xDB, 0xFE))
 

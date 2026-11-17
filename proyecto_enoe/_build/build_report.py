@@ -177,16 +177,17 @@ def resultado(texto):
 
 
 # ───────────────────────────── PORTADA ─────────────────────────────
-for _ in range(7):
+par_logo = doc.add_paragraph()
+par_logo.alignment = WD_ALIGN_PARAGRAPH.CENTER
+par_logo.paragraph_format.space_before = Pt(30)
+par_logo.add_run().add_picture(FIG + "logo_cugdl_negro.png", width=Inches(3.2))
+for _ in range(4):
     doc.add_paragraph()
 p("¿Quién trabaja en la informalidad? Predicción con datos de la ENOE (INEGI)", negrita=True, centrado=True, tam=18)
 p("Proyecto integrador · Análisis de datos (tema libre)", cursiva=True, centrado=True, tam=12)
 p("Analítica Predictiva", negrita=True, centrado=True, tam=13)
 p("17 de noviembre de 2026", centrado=True, tam=12)
-for _ in range(3):
-    doc.add_paragraph()
-p("Centro Universitario de Guadalajara", centrado=True, tam=12)
-for _ in range(3):
+for _ in range(4):
     doc.add_paragraph()
 mixto([("Objetivo: ", True), ("Explicar con mis palabras cada paso del proyecto (de dónde salen los datos, cómo los limpié, qué modelos "
                                 "usé y qué resultados obtuve), interpretar las tablas y gráficas, y responder las preguntas de la rúbrica.", False)])
