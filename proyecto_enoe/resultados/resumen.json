@@ -1,0 +1,683 @@
+{
+ "n_registros": 417128,
+ "n_variables": 115,
+ "embudo": {
+  "Registros totales": 417128,
+  "15 años o más": 324907,
+  "Población ocupada": 189353,
+  "Población de estudio": 189353
+ },
+ "n_estudio": 189353,
+ "tasa_pond": 0.5510263691459244,
+ "tasa_muestra": 0.5193263375811316,
+ "auditoria": [
+  {
+   "Variable": "anios_esc",
+   "Problema": "99 = no especificado",
+   "Registros": 622,
+   "% de la población": 0.33
+  },
+  {
+   "Variable": "e_con",
+   "Problema": "9 = no sabe",
+   "Registros": 28,
+   "% de la población": 0.01
+  },
+  {
+   "Variable": "niv_ins",
+   "Problema": "5 = no especificado",
+   "Registros": 500,
+   "% de la población": 0.26
+  },
+  {
+   "Variable": "rama",
+   "Problema": "7 = no especificado",
+   "Registros": 1432,
+   "% de la población": 0.76
+  },
+  {
+   "Variable": "ing7c",
+   "Problema": "7 = ingreso no especificado",
+   "Registros": 19097,
+   "% de la población": 10.09
+  },
+  {
+   "Variable": "hrsocup",
+   "Problema": "0 horas (ausencia temporal)",
+   "Registros": 7257,
+   "% de la población": 3.83
+  },
+  {
+   "Variable": "ingocup",
+   "Problema": "0 = sin ingreso",
+   "Registros": 65807,
+   "% de la población": 34.75
+  }
+ ],
+ "duplicados": 0,
+ "atipicos": {
+  "ingreso": {
+   "limite": 30100.0,
+   "n_atipicos": 3383,
+   "porcentaje": 1.99
+  },
+  "hrsocup": {
+   "limite": 72.0,
+   "n_atipicos": 4641,
+   "porcentaje": 2.55
+  },
+  "eda": {
+   "limite": 84.0,
+   "n_atipicos": 315,
+   "porcentaje": 0.17
+  }
+ },
+ "n_train": 151482,
+ "n_test": 37871,
+ "topes": {
+  "ingreso": 40000.0,
+  "horas": 84.0
+ },
+ "verificacion": [
+  {
+   "Variable": "eda",
+   "Media antes": 40.749,
+   "Media después": 40.749,
+   "Mediana antes": 40.0,
+   "Mediana después": 40.0,
+   "Corr. con y antes": 0.033,
+   "Corr. con y después": 0.033
+  },
+  {
+   "Variable": "anios_esc",
+   "Media antes": 11.082,
+   "Media después": 11.085,
+   "Mediana antes": 12.0,
+   "Mediana después": 12.0,
+   "Corr. con y antes": -0.373,
+   "Corr. con y después": -0.372
+  },
+  {
+   "Variable": "hrsocup",
+   "Media antes": 41.528,
+   "Media después": 41.574,
+   "Mediana antes": 45.0,
+   "Mediana después": 45.0,
+   "Corr. con y antes": -0.227,
+   "Corr. con y después": -0.227
+  },
+  {
+   "Variable": "ingreso",
+   "Media antes": 6.579,
+   "Media después": 6.816,
+   "Mediana antes": 8.954,
+   "Mediana después": 8.954,
+   "Corr. con y antes": -0.027,
+   "Corr. con y después": -0.036
+  }
+ ],
+ "orig_vs_proc": [
+  {
+   "": "Base original (SDEM)",
+   "Filas": 417128,
+   "Columnas": 115,
+   "Valores nulos": 120147
+  },
+  {
+   "": "Base procesada (X_train)",
+   "Filas": 151482,
+   "Columnas": 52,
+   "Valores nulos": 0
+  }
+ ],
+ "tasas": {
+  "grupo_esc": {
+   "0": 89.3,
+   "1-6": 78.9,
+   "7-9": 62.7,
+   "10-12": 48.5,
+   "13-16": 33.0,
+   "17+": 24.0
+  },
+  "grupo_edad": {
+   "15-19": 84.1,
+   "20-24": 55.8,
+   "25-29": 46.1,
+   "30-34": 44.8,
+   "35-39": 44.8,
+   "40-44": 44.9,
+   "45-49": 48.2,
+   "50-54": 49.0,
+   "55-59": 52.6,
+   "60-64": 65.1,
+   "65+": 74.4
+  },
+  "localidad": {
+   "Más de 100 mil": 42.1,
+   "15 mil a 100 mil": 55.1,
+   "2.5 mil a 15 mil": 65.0,
+   "Menos de 2.5 mil": 75.1
+  },
+  "sector": {
+   "Otros": 12.0,
+   "Manufactura": 35.2,
+   "Servicios": 47.5,
+   "Comercio": 54.1,
+   "Construcción": 76.9,
+   "No especificado": 81.6,
+   "Agropecuario": 83.3
+  },
+  "sexo": {
+   "Hombre": 51.2,
+   "Mujer": 52.9
+  },
+  "estado_civil": {
+   "Divorciado": 42.4,
+   "Casado": 47.9,
+   "No especificado": 50.0,
+   "Soltero": 52.6,
+   "Separado": 55.6,
+   "Unión libre": 55.8,
+   "Viudo": 68.9
+  }
+ },
+ "estados_altos": {
+  "Guerrero": 72.2,
+  "Tlaxcala": 72.8,
+  "Oaxaca": 73.2
+ },
+ "estados_bajos": {
+  "Chihuahua": 31.9,
+  "Coahuila": 34.8,
+  "Baja California": 36.0
+ },
+ "pruebas": [
+  {
+   "Variable": "anios_esc",
+   "Prueba": "t de Student",
+   "Fuerza": 0.806416666363765,
+   "p-value": 0.0
+  },
+  {
+   "Variable": "ingreso",
+   "Prueba": "t de Student",
+   "Fuerza": 0.47332935551249056,
+   "p-value": 0.0
+  },
+  {
+   "Variable": "hrsocup",
+   "Prueba": "t de Student",
+   "Fuerza": 0.472958336400245,
+   "p-value": 0.0
+  },
+  {
+   "Variable": "sector",
+   "Prueba": "Chi cuadrada",
+   "Fuerza": 0.28612227530547313,
+   "p-value": 0.0
+  },
+  {
+   "Variable": "localidad",
+   "Prueba": "Chi cuadrada",
+   "Fuerza": 0.25562557643358524,
+   "p-value": 0.0
+  },
+  {
+   "Variable": "entidad",
+   "Prueba": "Chi cuadrada",
+   "Fuerza": 0.22895104245304895,
+   "p-value": 0.0
+  },
+  {
+   "Variable": "sin_ingreso",
+   "Prueba": "Chi cuadrada",
+   "Fuerza": 0.19040074328828677,
+   "p-value": 0.0
+  },
+  {
+   "Variable": "estado_civil",
+   "Prueba": "Chi cuadrada",
+   "Fuerza": 0.09179857279853633,
+   "p-value": 0.0
+  },
+  {
+   "Variable": "eda",
+   "Prueba": "t de Student",
+   "Fuerza": 0.0679524743431706,
+   "p-value": 8.906328306420782e-50
+  },
+  {
+   "Variable": "sexo",
+   "Prueba": "Chi cuadrada",
+   "Fuerza": 0.01657360456530783,
+   "p-value": 5.515380226996395e-13
+  }
+ ],
+ "corr_redundantes": {
+  "niv_ins": 0.9233697298282797,
+  "cs_p13_1": 0.9806145587229141
+ },
+ "fuga": {
+  "Sin variables de fuga (mi modelo)": 0.8443888102876417,
+  "+ seg_soc (seguridad social)": 0.9764517177943097,
+  "+ pos_ocu (posición en la ocupación)": 0.8716109908732317,
+  "+ emple7c (tamaño de la unidad)": 0.9145261434124045,
+  "+ las tres juntas": 0.9931800634709866
+ },
+ "balance": {
+  "Informal": 51.93290291915871,
+  "Formal": 48.067097080841286
+ },
+ "class_weight": [
+  {
+   "Modelo": "Sin class_weight",
+   "precision": 0.7678,
+   "recall": 0.7326,
+   "F1": 0.7498
+  },
+  {
+   "Modelo": "Con class_weight='balanced'",
+   "precision": 0.7796,
+   "recall": 0.7128,
+   "F1": 0.7447
+  }
+ ],
+ "mejores_parametros": {
+  "Regresión logística": {
+   "C": "10"
+  },
+  "Árbol de decisión": {
+   "max_depth": "12",
+   "min_samples_leaf": "50"
+  },
+  "Random Forest": {
+   "max_depth": "16",
+   "min_samples_leaf": "5",
+   "n_estimators": "200"
+  }
+ },
+ "modelos": {
+  "Modelo base": {
+   "accuracy": 0.51932,
+   "precision": 0.0,
+   "recall": 0.0,
+   "F1": 0.0,
+   "ROC-AUC": 0.5,
+   "AUC entrenamiento": 0.5,
+   "AUC validación": 0.5,
+   "t_busqueda": 0.0,
+   "t_entrenar": 0.0,
+   "t_predecir": 0.0,
+   "Diferencia train-test": 0.0
+  },
+  "Regresión logística": {
+   "accuracy": 0.74635,
+   "precision": 0.76819,
+   "recall": 0.73265,
+   "F1": 0.75,
+   "ROC-AUC": 0.82168,
+   "AUC entrenamiento": 0.82068,
+   "AUC validación": 0.82069,
+   "t_busqueda": 17.04896,
+   "t_entrenar": 2.02824,
+   "t_predecir": 0.00418,
+   "Diferencia train-test": -0.00099
+  },
+  "Árbol de decisión": {
+   "accuracy": 0.78097,
+   "precision": 0.82059,
+   "recall": 0.74002,
+   "F1": 0.77823,
+   "ROC-AUC": 0.86106,
+   "AUC entrenamiento": 0.87243,
+   "AUC validación": 0.84175,
+   "t_busqueda": 3.91378,
+   "t_entrenar": 0.66113,
+   "t_predecir": 0.00237,
+   "Diferencia train-test": 0.01136
+  },
+  "Random Forest": {
+   "accuracy": 0.78942,
+   "precision": 0.82366,
+   "recall": 0.75644,
+   "F1": 0.78862,
+   "ROC-AUC": 0.87451,
+   "AUC entrenamiento": 0.89017,
+   "AUC validación": 0.86897,
+   "t_busqueda": 25.15232,
+   "t_entrenar": 4.60949,
+   "t_predecir": 0.06648,
+   "Diferencia train-test": 0.01566
+  }
+ },
+ "mejor_modelo": "Random Forest",
+ "confusion": [
+  [
+   15019,
+   3185
+  ],
+  [
+   4790,
+   14877
+  ]
+ ],
+ "tiempos": {
+  "Regresión logística": {
+   "Búsqueda de parámetros (s)": 17.049,
+   "Entrenamiento final (s)": 2.028,
+   "Predicción por 10 mil filas (s)": 0.004
+  },
+  "Árbol de decisión": {
+   "Búsqueda de parámetros (s)": 3.914,
+   "Entrenamiento final (s)": 0.661,
+   "Predicción por 10 mil filas (s)": 0.002
+  },
+  "Random Forest": {
+   "Búsqueda de parámetros (s)": 25.152,
+   "Entrenamiento final (s)": 4.609,
+   "Predicción por 10 mil filas (s)": 0.066
+  }
+ },
+ "escalamiento": {
+  "n": [
+   5000,
+   10000,
+   20000,
+   40000,
+   151482
+  ],
+  "tiempos": {
+   "Regresión logística": [
+    0.0330815315246582,
+    0.7735335826873779,
+    1.1432149410247803,
+    0.932185173034668,
+    1.5788631439208984
+   ],
+   "Árbol de decisión": [
+    0.03986167907714844,
+    0.05273008346557617,
+    0.07112288475036621,
+    0.13505029678344727,
+    0.5376453399658203
+   ],
+   "Random Forest": [
+    0.33411669731140137,
+    0.5291810035705566,
+    1.0413997173309326,
+    2.007007598876953,
+    7.621554613113403
+   ]
+  },
+  "pendientes": {
+   "Regresión logística": 0.895729706538061,
+   "Árbol de decisión": 0.771238214691066,
+   "Random Forest": 0.9308752335633206
+  }
+ },
+ "reproducible": true,
+ "importancia": {
+  "sexo": 0.0103,
+  "estado_civil": 0.0111,
+  "sin_ingreso": 0.0431,
+  "eda": 0.0498,
+  "entidad": 0.0545,
+  "localidad": 0.0901,
+  "sector": 0.1169,
+  "ingreso": 0.1876,
+  "hrsocup": 0.2155,
+  "anios_esc": 0.2211
+ },
+ "or": {
+  "eda": {
+   "coeficiente": -0.1332,
+   "OR": 0.8753
+  },
+  "anios_esc": {
+   "coeficiente": -0.9223,
+   "OR": 0.3976
+  },
+  "hrsocup": {
+   "coeficiente": -0.5775,
+   "OR": 0.5613
+  },
+  "ingreso": {
+   "coeficiente": 0.0197,
+   "OR": 1.0199
+  },
+  "sin_ingreso": {
+   "coeficiente": 4.0486,
+   "OR": 57.3169
+  },
+  "sexo_Mujer": {
+   "coeficiente": 0.1104,
+   "OR": 1.1167
+  },
+  "estado_civil_Divorciado": {
+   "coeficiente": 0.1265,
+   "OR": 1.1348
+  },
+  "estado_civil_No especificado": {
+   "coeficiente": 0.1393,
+   "OR": 1.1495
+  },
+  "estado_civil_Separado": {
+   "coeficiente": 0.1945,
+   "OR": 1.2147
+  },
+  "estado_civil_Soltero": {
+   "coeficiente": 0.3366,
+   "OR": 1.4002
+  },
+  "estado_civil_Unión libre": {
+   "coeficiente": 0.2221,
+   "OR": 1.2487
+  },
+  "estado_civil_Viudo": {
+   "coeficiente": 0.378,
+   "OR": 1.4593
+  },
+  "localidad_2.5 mil a 15 mil": {
+   "coeficiente": 0.2089,
+   "OR": 1.2323
+  },
+  "localidad_Menos de 2.5 mil": {
+   "coeficiente": 0.3928,
+   "OR": 1.4811
+  },
+  "localidad_Más de 100 mil": {
+   "coeficiente": -0.2524,
+   "OR": 0.7769
+  },
+  "sector_Comercio": {
+   "coeficiente": -0.3182,
+   "OR": 0.7275
+  },
+  "sector_Construcción": {
+   "coeficiente": 0.7226,
+   "OR": 2.0597
+  },
+  "sector_Manufactura": {
+   "coeficiente": -1.229,
+   "OR": 0.2926
+  },
+  "sector_No especificado": {
+   "coeficiente": 1.6043,
+   "OR": 4.9745
+  },
+  "sector_Otros": {
+   "coeficiente": -2.2463,
+   "OR": 0.1058
+  },
+  "sector_Servicios": {
+   "coeficiente": -0.3739,
+   "OR": 0.688
+  },
+  "entidad_Baja California": {
+   "coeficiente": -0.3836,
+   "OR": 0.6814
+  },
+  "entidad_Baja California Sur": {
+   "coeficiente": -0.3248,
+   "OR": 0.7227
+  },
+  "entidad_Campeche": {
+   "coeficiente": 0.4025,
+   "OR": 1.4955
+  },
+  "entidad_Chiapas": {
+   "coeficiente": 0.7032,
+   "OR": 2.0202
+  },
+  "entidad_Chihuahua": {
+   "coeficiente": -0.5315,
+   "OR": 0.5877
+  },
+  "entidad_Ciudad de MÃ©xico": {
+   "coeficiente": 0.3823,
+   "OR": 1.4656
+  },
+  "entidad_Coahuila": {
+   "coeficiente": -0.2427,
+   "OR": 0.7845
+  },
+  "entidad_Colima": {
+   "coeficiente": -0.0328,
+   "OR": 0.9677
+  },
+  "entidad_Durango": {
+   "coeficiente": 0.2105,
+   "OR": 1.2343
+  },
+  "entidad_Guanajuato": {
+   "coeficiente": 0.3391,
+   "OR": 1.4037
+  },
+  "entidad_Guerrero": {
+   "coeficiente": 1.0257,
+   "OR": 2.7889
+  },
+  "entidad_Hidalgo": {
+   "coeficiente": 0.6914,
+   "OR": 1.9965
+  },
+  "entidad_Jalisco": {
+   "coeficiente": -0.1407,
+   "OR": 0.8688
+  },
+  "entidad_MichoacÃ¡n": {
+   "coeficiente": 0.5036,
+   "OR": 1.6547
+  },
+  "entidad_Morelos": {
+   "coeficiente": 0.7679,
+   "OR": 2.1552
+  },
+  "entidad_MÃ©xico": {
+   "coeficiente": 0.3901,
+   "OR": 1.4771
+  },
+  "entidad_Nayarit": {
+   "coeficiente": 0.2103,
+   "OR": 1.234
+  },
+  "entidad_Nuevo LeÃ³n": {
+   "coeficiente": -0.3231,
+   "OR": 0.7239
+  },
+  "entidad_Oaxaca": {
+   "coeficiente": 0.9223,
+   "OR": 2.5151
+  },
+  "entidad_Puebla": {
+   "coeficiente": 0.8619,
+   "OR": 2.3677
+  },
+  "entidad_QuerÃ©taro": {
+   "coeficiente": -0.301,
+   "OR": 0.7401
+  },
+  "entidad_Quintana Roo": {
+   "coeficiente": -0.1803,
+   "OR": 0.835
+  },
+  "entidad_San Luis PotosÃ­": {
+   "coeficiente": 0.1949,
+   "OR": 1.2152
+  },
+  "entidad_Sinaloa": {
+   "coeficiente": -0.0207,
+   "OR": 0.9795
+  },
+  "entidad_Sonora": {
+   "coeficiente": -0.0864,
+   "OR": 0.9173
+  },
+  "entidad_Tabasco": {
+   "coeficiente": 0.548,
+   "OR": 1.7298
+  },
+  "entidad_Tamaulipas": {
+   "coeficiente": 0.0778,
+   "OR": 1.0809
+  },
+  "entidad_Tlaxcala": {
+   "coeficiente": 1.11,
+   "OR": 3.0344
+  },
+  "entidad_Veracruz": {
+   "coeficiente": 0.4567,
+   "OR": 1.5789
+  },
+  "entidad_YucatÃ¡n": {
+   "coeficiente": 0.4136,
+   "OR": 1.5123
+  },
+  "entidad_Zacatecas": {
+   "coeficiente": 0.156,
+   "OR": 1.1688
+  }
+ },
+ "hipotesis": [
+  {
+   "Hipótesis": "H1 escolaridad",
+   "Prueba": "Spearman",
+   "Estadístico": -0.37407686389717254,
+   "p-value": 0.0,
+   "OR": 0.39758849110065214,
+   "Veredicto": "RESPALDADA"
+  },
+  {
+   "Hipótesis": "H2 localidad pequeña",
+   "Prueba": "Chi cuadrada",
+   "Estadístico": 10090.030646146144,
+   "p-value": 0.0,
+   "OR": 1.9063384685326057,
+   "Veredicto": "RESPALDADA"
+  },
+  {
+   "Hipótesis": "H3 ingreso",
+   "Prueba": "t de Student",
+   "Estadístico": -96.26410579871245,
+   "p-value": 0.0,
+   "OR": 1.0198857671412218,
+   "Veredicto": "RECHAZADA"
+  }
+ ],
+ "tasa_rural": 75.05619508207889,
+ "tasa_urbana": 42.06187257456228,
+ "ingreso_medio": {
+  "informal": 6236.7952048726465,
+  "formal": 10529.34765370954
+ },
+ "resumen": {
+  "mejor": "Random Forest",
+  "auc_test": 0.8745121880273372,
+  "auc_val": 0.8689718344456807,
+  "f1": 0.7886241352805534,
+  "accuracy": 0.7894167040743577,
+  "precision": 0.823662938766471,
+  "recall": 0.7564448060202369,
+  "diferencia": 0.015658963966810324
+ }
+}

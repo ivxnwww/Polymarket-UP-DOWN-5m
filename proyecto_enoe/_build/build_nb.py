@@ -772,7 +772,7 @@ print(resumen_imp.sort_values(ascending=False).round(3).to_string())
 """)
 md(r"""
 ### 6.2 Razones de momios (odds ratio) y contraste de hipótesis
-Con la regresión logística, `exp(coeficiente)` es la **razón de momios (OR)**: si OR > 1 la variable *aumenta* la probabilidad de informalidad; si OR < 1 la *disminuye*. Las numéricas están estandarizadas, así que su OR es "por cada aumento de 1 desviación estándar". Las categorías se comparan contra la categoría que se quitó con `drop_first`.
+Con la regresión logística, `exp(coeficiente)` es la **razón de momios (OR)**: si OR > 1 la variable *aumenta* la probabilidad de informalidad; si OR < 1 la *disminuye*. Las numéricas están estandarizadas, así que su OR es "por cada aumento de 1 desviación estándar". Las categorías se comparan contra la categoría que se quitó con `drop_first` (la primera en orden alfabético: hombre, casado, localidad de 15 mil a 100 mil, sector agropecuario y Aguascalientes).
 """)
 code(r"""
 rl = mejores["Regresión logística"]
@@ -806,7 +806,8 @@ hipotesis.append({"Hipótesis": "H1 escolaridad", "Prueba": "Spearman", "Estadí
 sub2 = d[d["localidad"].isin(["Menos de 2.5 mil", "Más de 100 mil"])]
 tabla2 = pd.crosstab(sub2["localidad"], sub2["y"])
 chi2, p2, gl, esp = stats.chi2_contingency(tabla2)
-or2 = OR["localidad_Menos de 2.5 mil"]
+# Con drop_first la categoria quitada es "15 mil a 100 mil"; para comparar contra ">100 mil" divido los dos OR
+or2 = OR["localidad_Menos de 2.5 mil"] / OR["localidad_Más de 100 mil"]
 tasa_rural = d[d["localidad"] == "Menos de 2.5 mil"]["y"].mean() * 100
 tasa_urbana = d[d["localidad"] == "Más de 100 mil"]["y"].mean() * 100
 hipotesis.append({"Hipótesis": "H2 localidad pequeña", "Prueba": "Chi cuadrada", "Estadístico": chi2, "p-value": p2, "OR": or2,
